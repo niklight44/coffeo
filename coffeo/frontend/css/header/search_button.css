@@ -1,0 +1,15 @@
+
+.search-button{
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border: 2px solid #ede6e4;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    background-image: url('../../../assets/search_icon.png');
+    background-size: cover;
+
+    flex-shrink: 0;
+}

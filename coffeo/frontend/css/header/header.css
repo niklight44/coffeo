@@ -1,0 +1,13 @@
+@import 'logo.css';
+@import 'nav.css';
+@import 'search_button.css';
+@import 'cart_button.css';
+@import 'login_button.css';
+
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 43px;
+}

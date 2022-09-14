@@ -1,0 +1,22 @@
+
+
+.logo{
+    display: flex;
+    align-items: center;
+    margin: 0px 120px 0px 80px;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+
+}
+
+.logo__image img{
+    width: 75px;
+    height: 75px;
+}
+
+.logo__text{
+    margin-left: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    color: #343223;
+}
