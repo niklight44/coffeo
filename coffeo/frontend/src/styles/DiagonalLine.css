@@ -1,0 +1,25 @@
+.diagonal-line {
+  position: relative;
+  left: -350px;
+  width: 200%; /* Adjust as needed */
+  height: 48px;
+  background: linear-gradient(90deg, #693c29, #401c0d);
+  transform: rotate(-4deg); /* Rotate to create diagonal effect */
+}
+
+.moving-text {
+  position: absolute;
+  height: 48px;
+  line-height: 48px;
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-family: sans-serif;
+  word-spacing: 12rem;
+  animation: moveText 5s infinite linear; /* Adjust duration and animation as desired */
+}
+
+@keyframes moveText {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(30%); }
+}
