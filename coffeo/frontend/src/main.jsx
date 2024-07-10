@@ -11,11 +11,13 @@ import TheHeader from "./components/TheHeader.jsx";
 import TheFooter from "./components/TheFooter.jsx";
 
 const Layout = () => (
-    <div className="wrapper">
-        <TheHeader />
-        <Outlet />
+    <>
+        <div className="wrapper">
+            <TheHeader />
+            <Outlet />
+        </div>
         <TheFooter/>
-    </div>
+    </>
 );
 
 const router = createBrowserRouter([
