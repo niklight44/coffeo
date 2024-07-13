@@ -1,0 +1,37 @@
+.auth-section{
+    display: flex;
+    min-height: 60vh;
+
+}
+
+.login-section,
+.registration-section{
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+}
+
+
+
+.login-section > form,
+.registration-section > form{
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-section  input{
+    width: 400px;
+    height: 24px;
+}
+
+.auth-section button{
+    width: 408px;
+    height: 48px;
+    margin-top: 24px;
+}
+
+.auth-section label:not(:first-child){
+    margin-top: 24px;
+}
+

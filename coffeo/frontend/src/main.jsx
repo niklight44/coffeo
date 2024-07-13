@@ -9,15 +9,17 @@ import {
 } from "react-router-dom";
 import TheHeader from "./components/TheHeader.jsx";
 import TheFooter from "./components/TheFooter.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
+import { UserProvider } from './contexts/UserContext.jsx';
 
 const Layout = () => (
-    <>
+    <UserProvider>
         <div className="wrapper">
             <TheHeader />
             <Outlet />
         </div>
         <TheFooter/>
-    </>
+    </UserProvider>
 );
 
 const router = createBrowserRouter([
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: "about",
                 element: <div>About Page</div>
+            },
+            {
+                path: "auth",
+                element: <AuthPage/>
             }
         ]
     }
