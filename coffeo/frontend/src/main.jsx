@@ -11,6 +11,7 @@ import TheHeader from "./components/TheHeader.jsx";
 import TheFooter from "./components/TheFooter.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
 import { UserProvider } from './contexts/UserContext.jsx';
+import ShopPage from "./pages/ShopPage.jsx";
 
 const Layout = () => (
     <UserProvider>
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: "auth",
                 element: <AuthPage/>
+            },
+            {
+                path: "shop",
+                element: <ShopPage/>
             }
         ]
     }

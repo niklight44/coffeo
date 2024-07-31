@@ -1,82 +1,30 @@
-version: '3.7'
+version: '3.9'
 
 volumes:
-  postgres_data_new:
-  redis:
-  rabbitmq:
+  postgres_data_coffeo:
 
 services:
-  backend:
+  backend_coffeo:
     build:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
     depends_on:
-      - postgres
-      - redis
+      - postgres_coffeo
     volumes:
       - ./:/app
     command: >
-      bash -c "pip install -r requirements.txt && python3 manage.py migrate && python3 manage.py collectstatic --noinput && gunicorn --timeout 20 --bind 0.0.0.0:8000 project.wsgi:application --workers=3 --threads=2 --worker-class=gthread
+      sh -c "pip install -r requirements.txt && python3 manage.py migrate && python3 manage.py collectstatic --noinput && gunicorn --timeout 20 --bind 0.0.0.0:8000 project.wsgi:application --workers=3 --threads=2 --worker-class=gthread
       "
     restart: always
     env_file: .env
     ports:
       - 8000:8000
 
-  celery_beat:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: >
-      bash -c "pip install -r requirements.txt && celery -A project beat -l info
-      "
-    working_dir: /app
-    env_file: .env
-    volumes:
-      - ./:/app
-    restart: unless-stopped
-    depends_on:
-      - postgres
-      - redis
-
-  celery_worker:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: >
-      bash -c "pip install -r requirements.txt && celery -A project worker -l info
-      "
-    working_dir: /app
-    env_file: .env
-    volumes:
-      - ./:/app
-    restart: unless-stopped
-    depends_on:
-      - postgres
-      - redis
-
-  postgres:
+  postgres_coffeo:
     image: postgres:12.6
     volumes:
-      - postgres_data_new:/var/lib/postgresql/data
+      - postgres_data_coffeo:/var/lib/postgresql/data
     env_file: .env
     ports:
       - 37222:5432
-
-  redis:
-    image: library/redis:5.0-alpine
-    volumes:
-      - redis:/data
-    command: redis-server
-    restart: unless-stopped
-    expose:
-      - 6379
-
-  rabbit:
-    image: rabbitmq
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    volumes:
-      - rabbitmq:/var/lib/rabbitmq
