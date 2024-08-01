@@ -15,7 +15,7 @@ services:
     volumes:
       - ./:/app
     command: >
-      sh -c "pip install -r requirements.txt && python3 manage.py migrate && python3 manage.py collectstatic --noinput && gunicorn --timeout 20 --bind 0.0.0.0:8000 project.wsgi:application --workers=3 --threads=2 --worker-class=gthread
+      sh -c "pip install -r requirements.txt && python3 manage.py migrate && python3 manage.py collectstatic --noinput && gunicorn --log-file=- --timeout 60 --bind 0.0.0.0:8000 coffeo.wsgi:application --workers=3 --threads=2 --worker-class=gthread
       "
     restart: always
     env_file: .env
