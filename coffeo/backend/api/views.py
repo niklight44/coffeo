@@ -4,6 +4,7 @@ from rest_framework import generics, status, permissions
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_GET
 from .models import Product
@@ -16,13 +17,12 @@ from django.http import JsonResponse
 def get_csrf_token(request):
     return JsonResponse({'csrfToken': request.META.get('CSRF_COOKIE')})
 
-# Create your views here.
-class ProductList(APIView):
-    def get(self, request, format=None):
-        products = Product.objects.all()
 
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+# Create your views here.
+
+class ProductList(ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
 
 class UserRegister(APIView):
@@ -39,7 +39,8 @@ class UserRegister(APIView):
 
 class UserLogin(APIView):
     permission_classes = (permissions.AllowAny,)
-    authentication_classes = [SessionAuthentication,]
+    authentication_classes = [SessionAuthentication, ]
+
     def post(self, request):
         data = request.data
         serializer = UserLoginSerializer(data=data)
@@ -48,6 +49,7 @@ class UserLogin(APIView):
             login(request, user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(data={"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UserLogout(APIView):
     def post(self, request):
