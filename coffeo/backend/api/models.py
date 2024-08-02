@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Product(models.Model):
     name = models.CharField(max_length=264, unique=True)
-    image = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='product_images/', null=True, blank=True)
     price = models.FloatField(null=True)
     category = models.CharField(max_length=264)
     subcategory = models.CharField(max_length=264)
