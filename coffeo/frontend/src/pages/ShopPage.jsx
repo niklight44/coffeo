@@ -1,7 +1,7 @@
 import React from 'react';
 import ShopMenu from "../components/ShopMenu.jsx";
 import ShopProducts from "../components/ShopProducts.jsx";
-
+import "../styles/ShopPage.css";
 
 /**
  * ShopPage Component
@@ -20,8 +20,11 @@ const ShopPage = () => {
     return (
         <>
             <h1>Shop Page</h1>
-            <ShopMenu onCategorySelect={handleCategorySelect} />
-            <ShopProducts category={selectedCategory} />
+            <div className="shop-page-wrapper">
+                <ShopMenu onCategorySelect={handleCategorySelect} />
+                <ShopProducts category={selectedCategory} />
+            </div>
+
         </>
     );
 };

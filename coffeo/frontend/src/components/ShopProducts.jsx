@@ -24,7 +24,7 @@ const ShopProducts = ({ category }) => {
     }, [category]);
 
     return (
-        <>
+        <div className="shop-products">
             {products.length === 0 ? (
                 <p>No products found for this category.</p>
             ) : (
@@ -35,7 +35,7 @@ const ShopProducts = ({ category }) => {
                     </div>
                 ))
             )}
-        </>
+        </div>
     );
 };
 
