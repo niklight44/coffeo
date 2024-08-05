@@ -10,13 +10,19 @@ import ShopProducts from "../components/ShopProducts.jsx";
  *
  * @returns {JSX.Element} The shop page, including the category menu and the product listing.
  */
-const  ShopPage = () => {
+const ShopPage = () => {
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const handleCategorySelect = (category) => {
+        setSelectedCategory(category);
+    };
+
     return (
         <>
             <h1>Shop Page</h1>
-            <ShopMenu/>
-            <ShopProducts/>
+            <ShopMenu onCategorySelect={handleCategorySelect} />
+            <ShopProducts category={selectedCategory} />
         </>
-    )
-}
+    );
+};
 export default ShopPage;
