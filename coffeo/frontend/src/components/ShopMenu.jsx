@@ -16,6 +16,7 @@ const ShopMenu = ({ onCategorySelect }) => {
 
     return (
         <div className="shop-menu">
+            <div className="shop-menu__header">Menu</div>
             {categories.map((category, index) => (
                 <a href="#" key={index} onClick={() => onCategorySelect(category)}>
                     {category}

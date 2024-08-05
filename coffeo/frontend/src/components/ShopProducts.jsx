@@ -30,8 +30,16 @@ const ShopProducts = ({ category }) => {
             ) : (
                 products.map((product, index) => (
                     <div key={index} className="product">
-                        <h3>{product.name}</h3>
-                        <p>Price: ${product.price}</p>
+                        <div className="product__image">
+                            <img src={product.image} alt={product.name}/>
+                        </div>
+                        <h3 className="product__name">{product.name}</h3>
+                        <div className="product__price">${product.price}</div>
+                        <div className="product__buttons">
+                            <div className="product__cart-button">Add to cart</div>
+                            <div className="product__like-button">❤</div>
+                        </div>
+
                     </div>
                 ))
             )}
