@@ -5,6 +5,8 @@ import logo from '../assets/logo.png';
 import cart_icon from '../assets/cart_icon.png';
 import search_icon from '../assets/search_icon.png';
 import { UserContext } from '../contexts/UserContext';
+import CartIcon from "./CartIcon.jsx";
+import LoginButton from "./LoginButton.jsx";
 
 function TheHeader() {
     const { user } = useContext(UserContext);
@@ -26,14 +28,8 @@ function TheHeader() {
                 <div className="search-button">
                     <img src={search_icon} alt="search" />
                 </div>
-                <div className="cart-button">
-                    <img src={cart_icon} alt="cart" />
-                </div>
-                {user ? (
-                    <span className="auth-button">Hello, {user}</span>
-                ) : (
-                    <Link to="/auth" className="auth-button">Log in/Sign up</Link>
-                )}
+                <CartIcon/>
+                <LoginButton user={user}/>
             </div>
         </header>
     );

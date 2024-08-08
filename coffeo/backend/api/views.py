@@ -68,6 +68,10 @@ class UserLogout(APIView):
 
 class CartView(APIView):
     permission_classes = (permissions.AllowAny,)
+
+    def get(self):
+        pass
+
     def post(self, request):
         data = request.data
 
@@ -84,3 +88,6 @@ class CartView(APIView):
             return Response(data={"success": "Product saved to cart successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+

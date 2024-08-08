@@ -49,6 +49,7 @@ nav a:hover {
 
 .cart-button,
 .search-button{
+    position: relative;
     width: 56px;
     height: 56px;
     border: 1px solid #ede7e5;

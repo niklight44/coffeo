@@ -1,5 +1,6 @@
 import '../styles/Hero.css';
-import coffeeCupImage from '../assets/splashed_coffee_cup_v2.png'; // Adjust the import path as necessary
+import coffeeCupImage from '../assets/splashed_coffee_cup_v2.png';
+import {Link} from "react-router-dom"; // Adjust the import path as necessary
 
 function Hero() {
     return (
@@ -13,7 +14,7 @@ function Hero() {
                 </p>
                 <div className="hero__buttons">
                     <button className="hero__button hero__button--primary">Explore our products</button>
-                    <button className="hero__button hero__button--secondary">Log in / sign up</button>
+                    <Link to="auth" className="hero__button hero__button--secondary">Log in / sign up</Link>
                 </div>
                 <div className="hero__stats">
                     <div className="hero__stat">
