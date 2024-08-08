@@ -30,7 +30,7 @@ function TheHeader() {
                     <img src={cart_icon} alt="cart" />
                 </div>
                 {user ? (
-                    <span className="auth-button">Hello, {user.username}</span>
+                    <span className="auth-button">Hello, {user}</span>
                 ) : (
                     <Link to="/auth" className="auth-button">Log in/Sign up</Link>
                 )}

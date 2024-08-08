@@ -23,6 +23,28 @@ const ShopProducts = ({ category }) => {
             .catch(error => console.error('Error fetching products:', error));
     }, [category]);
 
+    let addToCart = async (productID) => {
+        console.log('Sending your product to cart');
+        let saveToCartURL = 'http://127.0.0.1:8000/api/cart/';
+        let username = localStorage.getItem('username');
+
+        let response = await fetch(saveToCartURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({"product_id": productID, "username": username})
+        });
+
+        if (!response.ok) {
+            alert('Cannot add this item to card now');
+            return;
+        }
+        alert('Product added to your cart');
+        const json = await response.json();
+        console.log(json);
+    }
+
     return (
         <div className="shop-products">
             {products.length === 0 ? (
@@ -36,7 +58,7 @@ const ShopProducts = ({ category }) => {
                         <h3 className="product__name">{product.name}</h3>
                         <div className="product__price">${product.price}</div>
                         <div className="product__buttons">
-                            <div className="product__cart-button">Add to cart</div>
+                            <div className="product__cart-button" onClick={() => addToCart(product.id)}>Add to cart</div>
                             <div className="product__like-button">❤</div>
                         </div>
 

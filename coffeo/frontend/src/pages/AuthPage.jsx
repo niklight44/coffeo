@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import "../styles/AuthPage.css";
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
+import {UserContext} from "../contexts/UserContext.jsx";
 
 const AuthPage = () => {
+    let isUserLoggedIn = useContext(UserContext)
+
+    useEffect(() => {
+        if (isUserLoggedIn) {
+            window.location.href = "/";
+        }
+    })
+
     return (
         <>
             <h1>AuthPage</h1>

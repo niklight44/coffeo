@@ -32,7 +32,7 @@ const LoginForm = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                setUser({ username: data.username });
+                setUser(data.username);
             } else {
                 const errorData = await response.json();
                 setError(errorData.message || 'Login failed');
