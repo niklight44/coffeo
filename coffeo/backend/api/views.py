@@ -9,7 +9,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Product, Cart
+from .models import Product, Cart, Order
 from .serializers import ProductSerializer, UserRegisterSerializer, UserLoginSerializer
 
 UserModel = get_user_model()
@@ -90,4 +90,16 @@ class CartView(APIView):
             return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class OrderView(APIView):
+    def post(self, request):
+        data = request.data
+        username = data.get('username')
 
+        try:
+            user_cart_products = Cart.objects.filter(username=username)
+            for cart_product in user_cart_products:
+                order = Order.objects.create(username=cart_product.username, product=cart_product.product)
+                order.save()
+            return Response(data={"success": "Order saved successfully"}, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
