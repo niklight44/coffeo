@@ -12,6 +12,7 @@ import TheFooter from "./components/TheFooter.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
 import { UserProvider } from './contexts/UserContext.jsx';
 import ShopPage from "./pages/ShopPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 const Layout = () => (
     <UserProvider>
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: "shop",
                 element: <ShopPage/>
+            },
+            {
+                path: "cart",
+                element: <CartPage/>
             }
         ]
     }

@@ -1,13 +1,14 @@
 import cart_icon from "../assets/cart_icon.png";
 import React, {useState, useEffect} from "react"
 import "../styles/CartIcon.css";
+import {Link} from "react-router-dom";
 
 const CartIcon = () => {
     const [productsInCartNumber, setProductsInCartNumber] = useState(0);
 
     useEffect(() => {
         const fetchCartItems = async () => {
-            let cartItemsURL = 'https://your-api-endpoint.com/cart-items'; // Replace with actual URL
+            let cartItemsURL = 'http://127.0.0.1:8000/api/products/'; // Replace with actual URL
             let response = await fetch(cartItemsURL);
             if (response.ok){
                 const data = await response.json();
@@ -22,12 +23,12 @@ const CartIcon = () => {
 
     return (
         <>
-            <div className="cart-button">
+            <Link to="cart" className="cart-button">
                 <img src={cart_icon} alt="cart" />
                 <div className="cart-products-number">
                     {productsInCartNumber}
                 </div>
-            </div>
+            </Link>
         </>
     );
 }

@@ -25,9 +25,9 @@ function TheHeader() {
                 <Link to="/about">About</Link>
             </nav>
             <div className="header__buttons">
-                <div className="search-button">
+                <Link to="shop" className="search-button">
                     <img src={search_icon} alt="search" />
-                </div>
+                </Link>
                 <CartIcon/>
                 <LoginButton user={user}/>
             </div>

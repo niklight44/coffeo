@@ -46,6 +46,7 @@
 }
 
 .product-card {
+    position: relative;
     background: #fff;
     padding: 1rem;
     border-radius: 8px;
