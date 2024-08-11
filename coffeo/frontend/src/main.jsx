@@ -7,12 +7,12 @@ import {
     RouterProvider,
     Outlet,
 } from "react-router-dom";
-import TheHeader from "./components/TheHeader.jsx";
-import TheFooter from "./components/TheFooter.jsx";
-import AuthPage from "./pages/AuthPage.jsx";
+import TheHeader from "./components/TheHeader/TheHeader.jsx";
+import TheFooter from "./components/TheFooter/TheFooter.jsx";
+import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import { UserProvider } from './contexts/UserContext.jsx';
-import ShopPage from "./pages/ShopPage.jsx";
-import CartPage from "./pages/CartPage.jsx";
+import ShopPage from "./pages/ShopPage/ShopPage.jsx";
+import CartPage from "./pages/CartPage/CartPage.jsx";
 
 const Layout = () => (
     <UserProvider>

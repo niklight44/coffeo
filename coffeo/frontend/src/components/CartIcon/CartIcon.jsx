@@ -1,7 +1,8 @@
-import cart_icon from "../assets/cart_icon.png";
+import cart_icon from "../../assets/cart_icon.png";
 import React, {useState, useEffect} from "react"
-import "../styles/CartIcon.css";
+import "./CartIcon.module.css";
 import {Link} from "react-router-dom";
+import styles from "./CartIcon.module.css";
 
 const CartIcon = () => {
     const [productsInCartNumber, setProductsInCartNumber] = useState(0);
@@ -25,7 +26,7 @@ const CartIcon = () => {
         <>
             <Link to="cart" className="cart-button">
                 <img src={cart_icon} alt="cart" />
-                <div className="cart-products-number">
+                <div className={styles.cartProductsNumber}>
                     {productsInCartNumber}
                 </div>
             </Link>

@@ -1,8 +1,8 @@
 import React, {useContext, useEffect} from 'react';
-import "../styles/AuthPage.css";
-import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
-import {UserContext} from "../contexts/UserContext.jsx";
+import "./AuthPage.css";
+import LoginForm from '../../components/LoginForm.jsx';
+import RegisterForm from '../../components/RegisterForm.jsx';
+import {UserContext} from "../../contexts/UserContext.jsx";
 
 const AuthPage = () => {
     let isUserLoggedIn = useContext(UserContext)
