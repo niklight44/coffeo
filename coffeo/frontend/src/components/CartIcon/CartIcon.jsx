@@ -26,7 +26,7 @@ const CartIcon = () => {
         <>
             <Link to="cart" className="cart-button">
                 <img src={cart_icon} alt="cart" />
-                <div className={styles.cartProductsNumber}>
+                <div className={styles['cart-products-number']}>
                     {productsInCartNumber}
                 </div>
             </Link>

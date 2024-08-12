@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import styles from './TheHeader.css';
+import styles from './TheHeader.module.css';
 import logo from '../../assets/logo.png';
 import cart_icon from '../../assets/cart_icon.png';
 import search_icon from '../../assets/search_icon.png';
@@ -15,7 +15,7 @@ function TheHeader() {
         <header>
             <div className={styles.logo}>
                 <img src={logo} alt="logo" />
-                <Link to="/" className={styles.logoText}>Coffeo</Link>
+                <Link to="/" className={styles.logo__text}>Coffeo</Link>
             </div>
             <nav>
                 <Link to="/product">Product</Link>
@@ -25,7 +25,7 @@ function TheHeader() {
                 <Link to="/about">About</Link>
             </nav>
             <div className={styles.header__buttons}>
-                <Link to="shop" className={styles.searchButton}>
+                <Link to="shop">
                     <img src={search_icon} alt="search" />
                 </Link>
                 <CartIcon/>

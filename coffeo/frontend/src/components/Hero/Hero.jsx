@@ -14,8 +14,8 @@ function Hero() {
                     Every order is roasted and shipped the same day.
                 </p>
                 <div className={styles.hero__buttons}>
-                    <button className={classnames(styles.hero__button, styles.hero__buttonPrimary)}>Explore our products</button>
-                    <Link to="auth" className={classname(styles.hero__button, styles.hero__buttonSecondary)}>Log in / sign up</Link>
+                    <button className={classnames(styles.hero__button, styles['hero__button--primary'])}>Explore our products</button>
+                    <Link to="auth" className={classnames(styles.hero__button, styles['hero__button--secondary'])}>Log in / sign up</Link>
                 </div>
                 <div className={styles.hero__stats}>
                     <div className={styles.hero__stat}>

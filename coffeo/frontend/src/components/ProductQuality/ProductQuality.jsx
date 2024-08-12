@@ -3,10 +3,10 @@ import styles from './ProductQuality.module.css';
 
 function ProductQuality() {
     return (
-        <section className={styles.productQuality}>
-            <div className={styles.productQuality__imageWrapper}>
-                <img src={coffeeBeansImage} alt="Coffee Beans" className={styles.productQuality__image} />
-                <div className={styles.productQuality__testimonial}>
+        <section className={styles['product-quality']}>
+            <div className={styles['product-quality__image-wrapper']}>
+                <img src={coffeeBeansImage} alt="Coffee Beans" className={styles['product-quality__image']} />
+                <div className={styles['product-quality__testimonial']}>
                     <img src="https://via.placeholder.com/50" alt="Brooklyn Simmons" className={styles.testimonial__image} />
                     <div className={styles.testimonial__text}>
                         <p>Brooklyn Simmons</p>
@@ -14,10 +14,10 @@ function ProductQuality() {
                     </div>
                 </div>
             </div>
-            <div className={styles.productQuality__content}>
+            <div className={styles['product-quality__content']}>
                 <h2>We care about the quality of our <span>products</span></h2>
                 <p>Drinking coffee is one of the most global things you do each day. Here, you can spend a long and comfortable time with this workspace's facilities.</p>
-                <div className={styles.productQuality__features}>
+                <div className={styles['product-quality__features']}>
                     <div className={styles.feature}>
                         <div className={styles.feature__icon}>💬</div>
                         <h3>Active community</h3>
@@ -39,7 +39,7 @@ function ProductQuality() {
                         <p>Our product is made by premium materials</p>
                     </div>
                 </div>
-                <button className={styles.productQuality__button}>Explore our products →</button>
+                <button className={styles['product-quality__button']}>Explore our products →</button>
             </div>
         </section>
     );

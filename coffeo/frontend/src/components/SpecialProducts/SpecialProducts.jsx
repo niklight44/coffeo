@@ -20,12 +20,12 @@ function SpecialProducts() {
     const [activeTab, setActiveTab] = useState(tabs[0]);
 
     return (
-        <section className={styles.specialProducts}>
-            <h2 className={styles.specialProducts__title}>Weekend special products</h2>
-            <p className={styles.specialProducts__subtitle}>
+        <section className={styles['special-products']}>
+            <h2 className={styles['special-products__title']}>Weekend special products</h2>
+            <p className={styles['special-products__subtitle']}>
                 Check out our daily special product that you can get with +%20 OFF!
             </p>
-            <div className={styles.specialProducts__tabs}>
+            <div className={styles['special-products__tabs']}>
                 {tabs.map(tab => (
                     <button
                         key={tab}
@@ -36,17 +36,17 @@ function SpecialProducts() {
                     </button>
                 ))}
             </div>
-            <div className={styles.specialProducts__list}>
+            <div className={styles['special-products__list']}>
                 {products[activeTab].map(product => (
-                    <div key={product.id} className={styles.productCard}>
-                        <div className={styles.productCard__discount}>%{product.discount}</div>
-                        <img src={coffeeCupImage} alt={product.name} className={styles.productCard__image} />
-                        <h3 className={styles.productCard__name}>{product.name}</h3>
-                        <div className={styles.productCard__prices}>
-                            <span className={styles.productCard__oldPrice}>{product.oldPrice}</span>
-                            <span className={styles.productCard__newPrice}>{product.newPrice}</span>
+                    <div key={product.id} className={styles['product-card']}>
+                        <div className={styles['product-card__discount']}>%{product.discount}</div>
+                        <img src={coffeeCupImage} alt={product.name} className={styles['product-card__image']} />
+                        <h3 className={styles['product-card__name']}>{product.name}</h3>
+                        <div className={styles['product-card__prices']}>
+                            <span className={styles['product-card__old-price']}>{product.oldPrice}</span>
+                            <span className={styles['product-card__new-price']}>{product.newPrice}</span>
                         </div>
-                        <button className={styles.productCard__cartButton}>Add to cart →</button>
+                        <button className={styles['product-card__cart-button']}>Add to cart →</button>
                     </div>
                 ))}
             </div>

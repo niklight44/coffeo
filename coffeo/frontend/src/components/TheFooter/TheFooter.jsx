@@ -40,7 +40,7 @@ function TheFooter() {
                     </div>
                     <div className={styles.footer__section}>
                         <h4>Social media</h4>
-                        <ul className="footer__social-media">
+                        <ul className={styles['footer__social-media']}>
                             <li><a href="https://twitter.com"><i className="fab fa-twitter"></i></a></li>
                             <li><a href="https://instagram.com"><i className="fab fa-instagram"></i></a></li>
                             <li><a href="https://facebook.com"><i className="fab fa-facebook-f"></i></a></li>
@@ -51,7 +51,7 @@ function TheFooter() {
                 </div>
                 <div className={styles.footer__bottom}>
                     <p>Copyright © 2022, Coffee.io</p>
-                    <div className={styles.footer__bottomLinks}>
+                    <div className={styles['footer__bottom-links']}>
                         <a href="/favicon">Favicon</a>
                         <a href="/support">Support</a>
                         <a href="/blog">Blog</a>
