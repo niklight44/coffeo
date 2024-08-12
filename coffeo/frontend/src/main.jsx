@@ -13,6 +13,7 @@ import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import { UserProvider } from './contexts/UserContext.jsx';
 import ShopPage from "./pages/ShopPage/ShopPage.jsx";
 import CartPage from "./pages/CartPage/CartPage.jsx";
+import OrderPage from "./pages/OrderPage/OrderPage.jsx";
 
 const Layout = () => (
     <UserProvider>
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <CartPage/>
+            },
+            {
+                path: "order",
+                element: <OrderPage/>
             }
         ]
     }

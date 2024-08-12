@@ -1,15 +1,18 @@
 import cart_icon from "../../assets/cart_icon.png";
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import "./CartIcon.module.css";
 import {Link} from "react-router-dom";
 import styles from "./CartIcon.module.css";
+import {UserContext} from "../../contexts/UserContext.jsx";
 
 const CartIcon = () => {
     const [productsInCartNumber, setProductsInCartNumber] = useState(0);
+    const { user } = useContext(UserContext);
+
 
     useEffect(() => {
         const fetchCartItems = async () => {
-            let cartItemsURL = 'http://127.0.0.1:8000/api/products/'; // Replace with actual URL
+            let cartItemsURL = `http://127.0.0.1:8000/api/cart/?username=${user}`;
             let response = await fetch(cartItemsURL);
             if (response.ok){
                 const data = await response.json();

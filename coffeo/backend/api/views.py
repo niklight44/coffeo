@@ -8,9 +8,11 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.models import User
+
 
 from .models import Product, Cart, Order
-from .serializers import ProductSerializer, UserRegisterSerializer, UserLoginSerializer
+from .serializers import ProductSerializer, UserRegisterSerializer, UserLoginSerializer, OrderSerializer
 
 UserModel = get_user_model()
 
@@ -69,8 +71,19 @@ class UserLogout(APIView):
 class CartView(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def get(self):
-        pass
+    def get(self, request):
+        username = request.query_params.get('username')
+        try:
+            if username:
+                cart_products = Cart.objects.filter(user__username=username)
+                products = [cart_product.product for cart_product in cart_products]
+            else:
+                products = []
+
+            serializer = ProductSerializer(products, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request):
         data = request.data
@@ -91,15 +104,32 @@ class CartView(APIView):
 
 
 class OrderView(APIView):
-    def post(self, request):
-        data = request.data
-        username = data.get('username')
-
+    def get(self, request):
+        username = request.query_params.get('username')
         try:
-            user_cart_products = Cart.objects.filter(username=username)
+            if username:
+                # Filter orders by the user
+                orders = Order.objects.filter(user__username=username)
+                # Extract the products from the orders
+                products = [order.product for order in orders]
+            else:
+                products = []
+
+            # Serialize the product details
+            serializer = ProductSerializer(products, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request):
+        username = request.data.get('username')
+        try:
+            user = User.objects.get(username=username)
+            user_cart_products = Cart.objects.filter(user=user)
             for cart_product in user_cart_products:
-                order = Order.objects.create(username=cart_product.username, product=cart_product.product)
+                order = Order.objects.create(user=user, product=cart_product.product)
                 order.save()
+                user_cart_products.delete()
             return Response(data={"success": "Order saved successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
