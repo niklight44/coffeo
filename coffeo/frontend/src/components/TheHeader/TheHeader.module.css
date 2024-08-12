@@ -43,6 +43,7 @@ nav a:hover {
 }
 
 .header__buttons {
+    position: relative;
     display: flex;
     gap: 1rem;
 }
@@ -62,6 +63,7 @@ nav a:hover {
 }
 
 .header__buttons > span {
+    position: relative;
     padding: 1rem 2rem;
     background-color: #723f29;
     border: 1px solid #333;
@@ -74,4 +76,19 @@ nav a:hover {
 .header__buttons > span:hover {
     background-color: #502e2e;
     color: #fff;
+}
+
+.header__buttons > div{
+    position: absolute;
+    bottom: -70px;
+    right: 25px;
+    display: none;
+    padding: 25px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.header__buttons > span:hover + div,
+.header__buttons > div:hover {
+    display: block;
 }
