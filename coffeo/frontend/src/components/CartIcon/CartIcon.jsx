@@ -12,6 +12,9 @@ const CartIcon = () => {
 
     useEffect(() => {
         const fetchCartItems = async () => {
+            if(!user){
+                return;
+            }
             let cartItemsURL = `${serverURL}/api/cart/?username=${user}`;
             let response = await fetch(cartItemsURL);
             if (response.ok){
@@ -19,6 +22,7 @@ const CartIcon = () => {
                 setProductsInCartNumber(data.length);
             } else {
                 console.error('Failed to fetch cart items');
+                setProductsInCartNumber(0)
             }
         };
 
