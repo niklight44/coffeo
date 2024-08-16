@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
  */
 const ShopProducts = ({ category }) => {
     const [products, setProducts] = useState([]);
-    const serverURL = process.env.REACT_APP_SERVER_URL;
+    const serverURL = import.meta.env.VITE_SERVER_URL;
 
     useEffect(() => {
         let url = `${serverURL}:8000/api/products/`;

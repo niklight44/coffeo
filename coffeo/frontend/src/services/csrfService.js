@@ -1,5 +1,5 @@
 export const getCSRFToken = async () => {
-    const serverURL = process.env.REACT_APP_SERVER_URL;
+    const serverURL = import.meta.env.VITE_SERVER_URL;
     let csrfTokenURL = `${serverURL}/api/get-csrf-token`;
     try {
         const response = await fetch(csrfTokenURL, {

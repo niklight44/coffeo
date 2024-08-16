@@ -8,7 +8,6 @@ const AuthPage = () => {
     let {isUserLoggedIn} = useContext(UserContext);         // return username or undefined/null
 
     useEffect(() => {
-        alert(isUserLoggedIn);
         console.log('AUTH PAGE USER: ', isUserLoggedIn);
         if (isUserLoggedIn) {
             console.log('Redirecting User to main page');
