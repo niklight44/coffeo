@@ -12,6 +12,7 @@ const CartIcon = () => {
 
     useEffect(() => {
         const fetchCartItems = async () => {
+            console.log('User:', user);
             if(!user){
                 return;
             }
