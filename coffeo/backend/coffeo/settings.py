@@ -162,7 +162,8 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'http://88.210.10.196'
+    'http://88.210.10.196',
+    'http://91.142.74.252/'
 ]
 
 CACHES = {
