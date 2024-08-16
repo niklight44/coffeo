@@ -18,7 +18,7 @@ const AuthPage = () => {
 
     return (
         <>
-            <h1>AuthPage</h1>
+            <h1>Auth Page</h1>
             <div className="auth-section">
                 <div className="login-section">
                     <h2>Login</h2>
