@@ -1,5 +1,5 @@
 export const getCSRFToken = async () => {
-    let csrfTokenURL = 'http://127.0.0.1:8000/api/get-csrf-token';
+    let csrfTokenURL = 'http://91.142.74.252:8000/api/get-csrf-token';
     try {
         const response = await fetch(csrfTokenURL, {
             method: 'GET',

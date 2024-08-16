@@ -5,7 +5,7 @@ import RegisterForm from '../../components/RegisterForm.jsx';
 import {UserContext} from "../../contexts/UserContext.jsx";
 
 const AuthPage = () => {
-    let isUserLoggedIn = useContext(UserContext)
+    let isUserLoggedIn = useContext(UserContext);
 
     useEffect(() => {
         if (isUserLoggedIn) {

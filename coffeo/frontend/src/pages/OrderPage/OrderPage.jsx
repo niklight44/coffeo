@@ -5,11 +5,11 @@ import {UserContext} from "../../contexts/UserContext.jsx";
 const OrderPage = () => {
     const [products, setProducts] = useState([]);
     const { user } = useContext(UserContext);
-    const imageServerURL = 'http://localhost:8000';
+    const imageServerURL = 'http://91.142.74.252:8000/';
 
     useEffect(() => {
         if (user) { // Ensure the user object and username are available
-            const url = `http://127.0.0.1:8000/api/orders/?username=${user}`;
+            const url = `http://91.142.74.252:8000/api/orders/?username=${user}`;
 
             console.log(`Username: ${user}`);
             fetch(url)
