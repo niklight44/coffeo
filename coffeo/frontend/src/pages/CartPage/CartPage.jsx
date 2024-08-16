@@ -5,11 +5,12 @@ import {UserContext} from "../../contexts/UserContext.jsx";
 const CartPage = () => {
     const [products, setProducts] = useState([]);
     const { user } = useContext(UserContext);
-    const ordersURL = 'http://91.142.74.252:8000/api/orders/';
+    const serverURL = process.env.REACT_APP_SERVER_URL;
+    const ordersURL = `${serverURL}/api/orders/`;
     const imageServerURL = 'http://91.142.74.252:8000/';
 
     useEffect(() => {
-        const url = `http://91.142.74.252:8000/api/cart/?username=${user}`;
+        const url = `${serverURL}/api/cart/?username=${user}`;
 
         fetch(url)
             .then(response => response.json())

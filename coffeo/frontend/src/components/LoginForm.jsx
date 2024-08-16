@@ -8,6 +8,8 @@ const LoginForm = () => {
     const [loginData, setLoginData] = useState({ username: '', password: '' });
     const [csrfToken, setCsrfToken] = useState('');
     const [error, setError] = useState('');
+    const serverURL = process.env.REACT_APP_SERVER_URL;
+
 
     useEffect(() => {
         const fetchCSRFToken = async () => {
@@ -21,7 +23,7 @@ const LoginForm = () => {
         e.preventDefault();
         setError(''); // Clear previous errors
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/login', {
+            const response = await fetch(`${serverURL}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

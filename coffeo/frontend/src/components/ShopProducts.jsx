@@ -10,9 +10,10 @@ import { useState, useEffect } from "react";
  */
 const ShopProducts = ({ category }) => {
     const [products, setProducts] = useState([]);
+    const serverURL = process.env.REACT_APP_SERVER_URL;
 
     useEffect(() => {
-        let url = 'http://91.142.74.252:8000/api/products/';
+        let url = `${serverURL}:8000/api/products/`;
         if (category) {
             url += `?category=${encodeURIComponent(category)}`;
         }
@@ -25,7 +26,7 @@ const ShopProducts = ({ category }) => {
 
     let addToCart = async (productID) => {
         console.log('Sending your product to cart');
-        let saveToCartURL = 'http://91.142.74.252:8000/api/cart';
+        let saveToCartURL = `${serverURL}:8000/api/cart`;
         let username = localStorage.getItem('username');
 
         let response = await fetch(saveToCartURL, {

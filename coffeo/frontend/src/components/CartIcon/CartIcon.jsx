@@ -8,11 +8,11 @@ import {UserContext} from "../../contexts/UserContext.jsx";
 const CartIcon = () => {
     const [productsInCartNumber, setProductsInCartNumber] = useState(0);
     const { user } = useContext(UserContext);
-
+    const serverURL = process.env.REACT_APP_SERVER_URL;
 
     useEffect(() => {
         const fetchCartItems = async () => {
-            let cartItemsURL = `http://91.142.74.252:8000/api/cart/?username=${user}`;
+            let cartItemsURL = `${serverURL}/api/cart/?username=${user}`;
             let response = await fetch(cartItemsURL);
             if (response.ok){
                 const data = await response.json();

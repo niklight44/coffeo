@@ -6,12 +6,14 @@ const RegisterForm = () => {
     const { setUser } = useContext(UserContext);
     const [registerData, setRegisterData] = useState({ username: '', email: '', password: '' });
     const [error, setError] = useState('');
+    const serverURL = process.env.REACT_APP_SERVER_URL;
+
 
     const handleRegister = async (e) => {
         e.preventDefault();
         setError(''); // Clear previous errors
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/register', {
+            const response = await fetch(`${serverURL}/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(registerData),

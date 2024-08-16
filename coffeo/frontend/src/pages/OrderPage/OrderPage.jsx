@@ -6,10 +6,12 @@ const OrderPage = () => {
     const [products, setProducts] = useState([]);
     const { user } = useContext(UserContext);
     const imageServerURL = 'http://91.142.74.252:8000/';
+    const serverURL = process.env.REACT_APP_SERVER_URL;
+
 
     useEffect(() => {
         if (user) { // Ensure the user object and username are available
-            const url = `http://91.142.74.252:8000/api/orders/?username=${user}`;
+            const url = `${serverURL}/api/orders/?username=${user}`;
 
             console.log(`Username: ${user}`);
             fetch(url)
