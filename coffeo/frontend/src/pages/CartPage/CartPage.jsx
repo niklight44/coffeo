@@ -9,7 +9,7 @@ const CartPage = () => {
     const imageServerURL = 'http://91.142.74.252:8000/';
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/api/cart/?username=${user}`;
+        const url = `http://91.142.74.252:8000/api/cart/?username=${user}`;
 
         fetch(url)
             .then(response => response.json())

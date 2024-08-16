@@ -12,7 +12,7 @@ const ShopProducts = ({ category }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        let url = 'http://localhost:8000/api/products/';
+        let url = 'http://91.142.74.252:8000/api/products/';
         if (category) {
             url += `?category=${encodeURIComponent(category)}`;
         }
@@ -25,7 +25,7 @@ const ShopProducts = ({ category }) => {
 
     let addToCart = async (productID) => {
         console.log('Sending your product to cart');
-        let saveToCartURL = 'http://127.0.0.1:8000/api/cart/';
+        let saveToCartURL = 'http://91.142.74.252:8000/api/cart';
         let username = localStorage.getItem('username');
 
         let response = await fetch(saveToCartURL, {
