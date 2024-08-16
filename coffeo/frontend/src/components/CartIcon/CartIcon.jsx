@@ -12,7 +12,7 @@ const CartIcon = () => {
 
     useEffect(() => {
         const fetchCartItems = async () => {
-            let cartItemsURL = `http://127.0.0.1:8000/api/cart/?username=${user}`;
+            let cartItemsURL = `http://91.142.74.252:8000/api/cart/?username=${user}`;
             let response = await fetch(cartItemsURL);
             if (response.ok){
                 const data = await response.json();
