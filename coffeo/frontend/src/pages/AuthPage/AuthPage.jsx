@@ -9,6 +9,7 @@ const AuthPage = () => {
 
     useEffect(() => {
         if (isUserLoggedIn) {
+            console.log('Redirecting User to main page');
             window.location.href = "/";
         }
     })
