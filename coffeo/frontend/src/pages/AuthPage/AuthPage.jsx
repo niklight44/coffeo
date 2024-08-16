@@ -12,7 +12,7 @@ const AuthPage = () => {
         console.log('AUTH PAGE USER: ', isUserLoggedIn);
         if (isUserLoggedIn) {
             console.log('Redirecting User to main page');
-            window.location.href = "/";
+            // window.location.href = "/";
         }
     })
 
