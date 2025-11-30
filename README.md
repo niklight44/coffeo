@@ -15,3 +15,9 @@ cd coffeo
 cd frontend
 npm run dev
 ```
+
+
+## Create ENV file:
+```bash
+sed 's/EXAMPLE_/LOCAL_/' deployments/backend/coffeo/.env.example > .env.local
+```
