@@ -2,3 +2,6 @@ coffeo/backend/venv/
 coffeo/frontend/node_modules/
 coffeo/backend/.env
 coffeo/frontend/.env
+.idea/
+__pycache__/
+venv/
