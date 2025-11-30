@@ -1,0 +1,82 @@
+
+services:
+  coffeo_service:
+    extends:
+      file: ./local_coffeo_base.yml
+      service: coffeo_service_base
+    depends_on:
+      - coffeo_db
+      - coffeo_redis
+    container_name: local_coffeo_service
+    command: ["python", "manage.py", "runserver", "0.0.0.0:${LOCAL_COFFEO_PORT}"]
+    ports:
+      - "${LOCAL_COFFEO_PORT}:${LOCAL_COFFEO_PORT}"
+    expose:
+      - "${LOCAL_COFFEO_PORT}"
+    environment:
+      - CELERY_BROKER_URL=redis://:${LOCAL_COFFEO_REDIS_PASSWORD}@coffeo_redis:${LOCAL_COFFEO_REDIS_PORT}/0
+
+  coffeo_celery_worker:
+    extends:
+      file: ./local_coffeo_base.yml
+      service: coffeo_service_base
+    depends_on:
+      - coffeo_db
+      - coffeo_redis
+    container_name: local_coffeo_service_celery_worker
+    command: ["celery", "-A", "coffeo", "beat", "-l", "debug"]
+    environment:
+      - SERVER_NAME=celery_worker
+
+  coffeo_celery_beat:
+    extends:
+      file: ./local_coffeo_base.yml
+      service: coffeo_service_base
+    depends_on:
+      - coffeo_db
+      - coffeo_redis
+    container_name: local_coffeo_service_celery_beat
+    command: ["celery", "-A", "coffeo", "beat", "-l", "debug"]
+    environment:
+      - SERVER_NAME=celery_beat
+
+  coffeo_db:
+    container_name: local_coffeo_service_db
+    image: postgres:16.0-alpine
+    networks:
+      - local_coffeo_network
+    restart: always
+    volumes:
+      - coffeo_postgres_data:/var/lib/postgresql/data/
+    command: [ "-p", "${LOCAL_COFFEO_DB_PORT}" ]
+    ports:
+      - "${LOCAL_COFFEO_DB_PORT}:${LOCAL_COFFEO_DB_PORT}"
+    expose:
+      - "${LOCAL_COFFEO_DB_PORT}"
+    environment:
+      - POSTGRES_USER=${LOCAL_COFFEO_DB_USER}
+      - POSTGRES_PASSWORD=${LOCAL_COFFEO_DB_PASSWORD}
+      - POSTGRES_DB=${LOCAL_COFFEO_DB_NAME}
+
+  coffeo_redis:
+    container_name: local_coffeo_service_redis
+    image: redis:7.2.2-alpine
+    networks:
+      - local_coffeo_network
+    restart: always
+    ports:
+      - "${LOCAL_COFFEO_REDIS_PORT}:${LOCAL_COFFEO_REDIS_PORT}"
+    expose:
+      - "${LOCAL_COFFEO_REDIS_PORT}"
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${LOCAL_COFFEO_REDIS_PASSWORD} --port ${LOCAL_COFFEO_REDIS_PORT}
+
+
+networks:
+  local_backend_network:
+    external: true
+  local_coffeo_network:
+
+
+
+volumes:
+  coffeo_postgres_data:
